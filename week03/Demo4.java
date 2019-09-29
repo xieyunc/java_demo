@@ -17,7 +17,7 @@ public class Demo4 {
 				System.out.println("及格");
 				break;
 			default:
-				System.out.println("不及格");
+				System.out.println("差");
 				break;
 		}
 	}
