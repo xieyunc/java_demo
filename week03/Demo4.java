@@ -1,6 +1,10 @@
-﻿public class Demo4 {
+import java.util.Scanner;
+
+public class Demo4 {
 	public static void main(String[] args) {
-		int score = 70;
+		Scanner input = new Scanner(System.in);
+		System.out.print("请输入你的成绩：");
+		int score = input.nextInt();
 		
 		switch(score/10){
 			case 10:

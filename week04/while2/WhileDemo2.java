@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class DoWhileDemo {
+public class WhileDemo2 {
 	public static void main(String[] args) {
 		int score = 0;
 		Scanner input = new Scanner(System.in);
-		do{
+		while(true){
 			System.out.print("请输入你的成绩(输入-1退出)：");
 			score = input.nextInt();
 			
@@ -29,7 +29,7 @@ public class DoWhileDemo {
 				default:
 					System.out.println("差");
 					break;
-			}while(true);
+			}
 		}
 	}
 }

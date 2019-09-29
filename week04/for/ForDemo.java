@@ -1,14 +1,12 @@
-/*
-	本例子计算从1加到100，如果和达到1000就退出
-*/
 public class ForDemo {
 	public static void main(String[] args) {
-		int s = 0;
-		for(int i=1;i<=100;i++) {
+		int i, s = 0;
+		for (i = 3;i<=100;i+=3) {
 			s += i;
 			if (s>=1000)
 				break;
 		}
-		System.out.println("i="+i+",s="+s);
+		System.out.println("i="+i);
+		System.out.println("s="+s);
 	}
 }
