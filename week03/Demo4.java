@@ -1,4 +1,4 @@
-public class Demo4 {
+﻿public class Demo4 {
 	public static void main(String[] args) {
 		int score = 70;
 		
@@ -11,10 +11,10 @@ public class Demo4 {
 				System.out.println("良");
 				break;
 			case 7:
-				System.out.println("中等");
+				System.out.println("中");
 				break;
 			case 6:
-				System.out.println("及格");
+				System.out.println("及");
 				break;
 			default:
 				System.out.println("差");
