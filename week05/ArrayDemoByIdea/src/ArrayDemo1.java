@@ -1,4 +1,4 @@
-public class ArrayDemo {
+public class ArrayDemo1 {
     public static void main(String[] args) {
         int[] a; //声明了一个数组变量a
         a = new int[5];//开启了5个元素的数组对象及空间
