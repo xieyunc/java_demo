@@ -4,7 +4,7 @@
 
 import java.util.Arrays;
 
-public class StringConvertDemo {
+public class StringConvertDemo1 {
     public static void main(String[] args) {
         String sVer = "小宇飞刀！";
         char[] cArray;
