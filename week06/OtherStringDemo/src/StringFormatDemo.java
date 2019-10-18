@@ -29,9 +29,5 @@ public class StringFormatDemo {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        String sdt = sdf.format(dt);
-        System.out.println(sdt);
-
-
     }
 }
