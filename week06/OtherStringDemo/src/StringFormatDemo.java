@@ -1,33 +1,28 @@
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class StringFormatDemo {
     public static void main(String[] args) {
-        int x = 16;
         char ch = 'A';
         byte bt = 97;
-        double dd = 7851412.957418;
+        int x = 99;
+        double dd = 3213564.7851455;
+        System.out.println(ch+","+bt+","+x);
 
-        System.out.println(x);
-        System.out.println(ch);
-        System.out.println(bt);
-        System.out.println(dd);
+        String ss = String.format("%c,%c,%c",ch,bt,x);
+        System.out.println(ss);
 
-        String s1 = String.format("%06d",x);
-        System.out.println(s1);
-        System.out.println(String.format("%-6d     ",x));
-        System.out.println(String.format("%,3.2f",dd));
-        System.out.printf("%c",ch); //使用printf()方法可以简化String.Format()的写法
-        System.out.printf("\n%c\n",bt);
+        System.out.println(String.format("%06d",x));
+        System.out.println(String.format("%,23.2f",dd));
+        System.out.printf("%,23.2f",dd);
 
-        Date dt = new Date(); //获取系统当前日期和时间
-        //Date对象的格式化串必须以 "%t"开始 F参数表示日期格式为yyyy-MM-dd  T参数表示时间格式为HH:mm:ss
-        System.out.printf("%tF %tT",dt,dt);
+        Date toDay = new Date();
 
-        System.out.println("\n===============================");
+        System.out.println(toDay.toString());
+        System.out.printf("%tF %tR\n",toDay,toDay);
 
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+        System.out.println(sdf.format(toDay));
 
     }
 }

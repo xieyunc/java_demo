@@ -1,6 +1,16 @@
 import java.util.Arrays;
 
 public class StringDemo1 {
+    public static void displayArray(byte[] btArray) {
+        System.out.print("[");
+        for(int i=0;i<btArray.length;i++) {
+            System.out.print(btArray[i]);
+            if (i<btArray.length-1)
+                System.out.print(", ");
+        }
+        System.out.print("]");
+    }
+
     public static void main(String[] args) {
         String s1 = "Hello,World!";
         String s2 = "Hello,World!";
@@ -8,48 +18,50 @@ public class StringDemo1 {
 
         System.out.println(s1==s2);
         System.out.println(s1==s3);
+        System.out.println(s1.equals(s3));
 
-        byte[] bytes = {65,66,67,68};
-        char[] intArray = {97,98,99,100};
+        byte[] btArray = {65,66,67,68};
 
-        for(byte ch:bytes){
-            System.out.print(ch+" ");
-        }
+        System.out.println("=====================");
+        displayArray(btArray);
+        System.out.println("\n=====================");
+        System.out.println(Arrays.toString(btArray));
 
-        System.out.println("\n"+Arrays.toString(bytes));
-        System.out.println(bytes.toString());
-
-        String s4 = new String(bytes);
-        String s5 = new String(bytes,1,2);
-        String s6 = new String(intArray);
-
+        String s4 = new String(btArray);
         System.out.println(s4);
+
+        char[] chArrray = {'中','a','3'};
+        String s5 = new String(chArrray);
         System.out.println(s5);
-        System.out.println(s6);
 
-        byte[] bytes1 = s1.getBytes();
-        char[] cArray = s1.toCharArray();
+        byte[] btArray2;
+        btArray2 = s1.getBytes();
+        System.out.println(Arrays.toString(btArray2));
 
-        System.out.println(Arrays.toString(bytes1));
-        System.out.println(Arrays.toString(cArray));
+        char[] chArray2;
+        chArray2 = s1.toCharArray();
+        System.out.println(Arrays.toString(chArray2));
 
         System.out.println(s1.length());
-        System.out.println(s1.charAt(3));
-        System.out.println(s1.indexOf("LLo"));
-        System.out.println(s1.contains("LLo"));
-        System.out.println(s1.startsWith("Hello"));
-        System.out.println(s1.substring(3,5));
-        System.out.println(s1.replace("World","Java"));
-        s1 = s1.replace("World","Java");
-        System.out.println(s1.toString());
+        System.out.println(s1.charAt(5));
 
-        String ss = "江西;浙江;北京;天津,四川,广东;湖北,湖南,黑龙江,内蒙古";
+        System.out.println(s1);
+        System.out.println(s1.indexOf("lo"));  //如果没有"lo"这一子串，返回-1，否则返回"lo"在s1中的起始位置
+        System.out.println(s1.contains("lo"));
 
-        String[] strArray = ss.split(";");
-        for(String str:strArray) {
-            System.out.println(str);
-        }
+        String s6 = "Hello,world!";
 
+        System.out.println(s1.equals(s6)); //false
+        System.out.println(s1.equalsIgnoreCase(s6));//true
 
+        System.out.println("-----------------------------------------------");
+        System.out.println(s6);
+        System.out.println(s6.replace("w","W"));
+        s6 = s6.replace("w","W");
+        System.out.println(s6);
+
+        s6 = "  ab cd efg     ";
+        System.out.println(s6.trim());
+        System.out.println(s6);
     }
 }
