@@ -5,14 +5,14 @@
  * 3、创建一个public static的get()方法，以使得外界能够获取该类的实例，由于该方法是静态的，因此
  *    可以通过 类名.方法名() 的方式来调用该方法。
  */
-public class Single {
-    private static Single single = new Single();
+public class Singleton {
+    private static Singleton instance = new Singleton();
 
-    private Single() {
+    private Singleton() {
         System.out.println("我是一个Singleton模式的类："+this.hashCode());
     }
 
-    public static Single getSingle() {
-        return  single;
+    public static Singleton getInstance() {
+        return instance;
     }
 }

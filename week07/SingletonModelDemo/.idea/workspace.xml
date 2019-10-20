@@ -34,8 +34,8 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="SingleTest" type="Application" factoryName="应用程序" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SingleTest" />
+    <configuration name="SingletonTest" type="Application" factoryName="应用程序" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SingletonTest" />
       <module name="SingletonModelDemo" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -43,7 +43,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.SingleTest" />
+        <item itemvalue="应用程序.SingletonTest" />
       </list>
     </recent_temporary>
   </component>
