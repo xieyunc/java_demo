@@ -3,14 +3,15 @@
  * 功能描述：经理类
  */
 class Manager extends Employee {
-    int bonus; //奖金
-    public Manager(String name,String id,double pay,int bonus) {
+    double bonus; //奖金
+    public Manager(String name,String id,double pay,double bonus) {
         super(name,id,pay);
         this.bonus = bonus;
     }
 
     public void work() {
         System.out.println(this.getClass()+":");
-        System.out.printf("name:%-10s\tid=%-10s\tpay=%,-15.2f\tbonus=%,-10d\n",name,id,pay,bonus);
+        showInfo();
+        System.out.println(String.format("我是一名经理，我的奖金是：%,.2f",bonus));
     }
 }

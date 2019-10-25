@@ -3,14 +3,16 @@
  * 功能描述：程序员类
  */
 class Programmer extends Employee{
-    int bonus; //奖金
-    public Programmer(String name,String id,double pay) {
+    String developmentLanguage; //开发语言
+    public Programmer(String name,String id,double pay,String developmentLanguage) {
         super(name,id,pay);
+        this.developmentLanguage = developmentLanguage;
     }
 
     public void work() {
         System.out.println(this.getClass()+":");
-        System.out.printf("name:%-10s\tid=%-10s\tpay=%,-15.2f\n",name,id,pay);
+        showInfo();
+        System.out.println(String.format("我是一名程序员，我的开发语言是：%s",developmentLanguage));
     }
 
 }
