@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65230662-8d7a-4cc5-b7aa-5a72ab7687a9" name="默认的" comment="">
+    <list default="true" id="ba196e29-0c7f-4fe4-8888-5274044e14a3" name="默认的" comment="">
+      <change afterPath="$PROJECT_DIR$/../../week08/AbstractDemo/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AbstractDemo/AbstractDemo.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../week09/AbstractDemo/AbstractDemo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../week08/AbstractDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../week08/AbstractDemo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../week08/AbstractDemo/src/Programmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../week08/AbstractDemo/src/Programmer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Programmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Programmer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="AbstractDemo" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -26,19 +25,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectId" id="1SQfbBp0jswaJ7RZ72rOCpTWX4M" />
+  <component name="ProjectId" id="1Sj8aVRacaxYKqBsSEEfRNDNvRU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.xyfd.test" />
+      <recent name="com.xyfd.common" />
+    </key>
   </component>
   <component name="RunDashboard">
-    <option name="configurationTypes">
-      <set>
-        <option value="Application" />
-      </set>
-    </option>
     <option name="ruleStates">
       <list>
         <RuleState>
@@ -50,52 +50,35 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="应用程序.AbstractTest">
-    <configuration name="AbstractDemo" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="AbstractTest" />
-      <module name="AbstractDemo" />
+  <component name="RunManager">
+    <configuration name="TestDemo" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.xyfd.test.TestDemo" />
+      <module name="PackageDemo" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AbstractTest" type="Application" factoryName="应用程序" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AbstractTest" />
-      <module name="AbstractDemo" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="应用程序.AbstractTest" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="应用程序.AbstractTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
       <serviceView>
-        <option name="contentProportion" value="0.10660173" />
         <treeState>
           <expand />
           <select />
         </treeState>
       </serviceView>
     </option>
-    <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="65230662-8d7a-4cc5-b7aa-5a72ab7687a9" name="默认的" comment="" />
-      <created>1571500808523</created>
+      <changelist id="ba196e29-0c7f-4fe4-8888-5274044e14a3" name="默认的" comment="" />
+      <created>1572065707231</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1571500808523</updated>
+      <updated>1572065707231</updated>
     </task>
     <servers />
   </component>
