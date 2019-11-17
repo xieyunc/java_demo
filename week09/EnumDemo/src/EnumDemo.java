@@ -11,7 +11,7 @@ public class EnumDemo {
 
         for(WeekDay day:WeekDay.values())
         {
-            System.out.println(day+"====>"+day.getDay());
+            System.out.println(day+"====>"+day.getDay());//输出中文星期信息
         }
     }
 }

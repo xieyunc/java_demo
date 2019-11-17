@@ -8,7 +8,7 @@ import java.util.Vector;
 public class EnumerationDemo {
     public static void main(String[] args) {
         Enumeration<String> weekDays; //声明一个枚举对象
-        Vector<String> weekDayNames = new Vector<String>(); //Vector：向量类，相当于于一个可变数组
+        Vector<String> weekDayNames = new Vector<String>(); //Vector：向量类，类似于一个可变数组
 
         weekDayNames.add("星期一");
         weekDayNames.add("星期二");
