@@ -2,14 +2,14 @@
  * 文件名：CoxClass.java
  * 功能描述：
  */
-import java.applet.*;
+import javax.swing.*;
 import java.awt.*;
 
-public class CoxClass extends Applet
+public class CoxClass extends JApplet
 {
     int x,y;
 
-    public void start()
+    public void init()
     {
         //画画之前，必须先取得画笔
         Graphics g=getGraphics();
