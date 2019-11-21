@@ -10,9 +10,11 @@ public class NumbersDemo {
 
         System.out.printf("dVer=%.2f,fVer=%.2f\n",dVer,fVer);
 
+        //ceil()返回>=给定参数的最小整数，返回类型为双精度浮点型
         System.out.printf("Math.ceil(%.2f)=%.2f,",dVer,Math.ceil(dVer));
         System.out.printf("Math.ceil(%.2f)=%.2f\n",fVer,Math.ceil(fVer));
 
+        //floor()返回<=给定参数的最大整数，返回类型为双精度浮点型
         System.out.printf("Math.floor(%.2f)=%.2f,",dVer,Math.floor(dVer));
         System.out.printf("Math.floor(%.2f)=%.2f\n",fVer,Math.floor(fVer));
 
@@ -21,11 +23,13 @@ public class NumbersDemo {
         System.out.printf("Math.round(%.2f)=%d,",dVer,Math.round(dVer));
         System.out.printf("Math.round(%.2f)=%d\n",fVer,Math.round(fVer));
 
+        //ceil()返回与参数最接近的整数，返回类型为双精度浮点型
         System.out.printf("Math.rint(%.2f)=%.2f,",dVer,Math.rint(dVer));
         System.out.printf("Math.rint(%.2f)=%.2f\n",fVer,Math.rint(fVer));
 
+        //parseXXX():将字符串解析为XXX的基本数据类型
         dVer = Double.parseDouble("11.5");  //parseDouble() 返回一个基本数据类型
-        Double dObj = Double.valueOf("11.5");  //valueOf()  返回一个基本数据类型的类对象
+        Double dObj = Double.valueOf("11.5");  //valueOf()  返回一个基本数据类型的包装类对象
 
         System.out.println("dVer="+dVer+",dObj="+dObj.toString());
 
