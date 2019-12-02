@@ -3,7 +3,7 @@ import java.util.*;
 
 /**
  * 文件名：GenericTest.java
- * 功能描述：
+ * 功能描述：类型通配符的使用
  */
 public class GenericTest {
     public static void printData(List<?> data) {
