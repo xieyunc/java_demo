@@ -1,20 +1,25 @@
 /**
- * 文件名：TestJFrame.java
- * 功能描述：
+ * 文件名：MenuFrame.java
+ * 功能描述：菜单窗口类
  */
 import java.awt.event.*;
 import java.lang.reflect.Modifier;
 import javax.swing.*;
-public class TestJFrame {
-    public TestJFrame() {
+public class MenuFrame extends JFrame {
+    public MenuFrame() {
+        initFrame();
+        initMenu();
+    }
 
-        JFrame frame = new JFrame("窗口及菜单Demo");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //设置窗口关闭方式
-        frame.setSize(700,450);
-        frame.setLocationRelativeTo(null); //居中显示
-        frame.setVisible(true);
+    private void initFrame() {
+        setTitle("窗口及菜单Demo");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //设置窗口关闭方式
+        setSize(700,450);
+        setLocationRelativeTo(null); //居中显示
+    }
 
-        JMenuBar menubar=new JMenuBar();
+    private void initMenu() {
+        JMenuBar menubar = new JMenuBar();
         JMenu menuFile = new JMenu("文件(F)");
         JMenu menuEdit = new JMenu("编辑(E)");
         JMenu menuView = new JMenu("查看(L)");
@@ -27,9 +32,9 @@ public class TestJFrame {
         menubar.add(menuEdit);
         menubar.add(menuView);
 
-        JMenu mnOpen=new JMenu("打开(O)"); //文件菜单下的一个二级主菜单条
+        JMenu menuOpen = new JMenu("打开(O)"); //文件菜单下的一个二级主菜单条
 
-        mnOpen.setMnemonic('O');
+        menuOpen.setMnemonic('O');
         JMenuItem miOpenCVS = new JMenuItem("打开CVS格式文件");
         JMenuItem miOpenTXT = new JMenuItem("打开TXT格式文件");
 
@@ -38,15 +43,15 @@ public class TestJFrame {
 
         JMenuItem miExit=new JMenuItem("退出(X)");
 
-        menuFile.add(mnOpen);
+        menuFile.add(menuOpen);
         menuFile.add(miSave);
         menuFile.addSeparator(); //分隔线
         menuFile.add(miExit);
 
-        mnOpen.add(miOpenCVS);
-        mnOpen.add(miOpenTXT);
+        menuOpen.add(miOpenCVS);
+        menuOpen.add(miOpenTXT);
 
-        JMenuItem miCopy=new JMenuItem("复制(C)");
+        JMenuItem miCopy = new JMenuItem("复制(C)");
         miCopy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,InputEvent.CTRL_MASK));
         JMenuItem miCut=new JMenuItem("剪切(X)");
         miCut.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X,InputEvent.CTRL_MASK));
@@ -67,19 +72,8 @@ public class TestJFrame {
         menuView.addSeparator();
         menuView.add(miStop);
 
-        frame.setJMenuBar(menubar);
-        frame.validate();
+        setJMenuBar(menubar);
+        validate();
     }
 
-    public static void main(String[] args) {
-        try {
-            //String lookAndFeel = UIManager.getCrossPlatformLookAndFeelClassName();//可跨平台的默认风格
-            String lookAndFeel = UIManager.getSystemLookAndFeelClassName();//当前系统风格
-            UIManager.setLookAndFeel(lookAndFeel);
-
-        }catch (Exception e) {}
-
-        new TestJFrame();
-
-    }
 }

@@ -1,28 +1,44 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
 
-import javax.swing.JButton;
+/**
+ * 文件名：MyJFrame.java
+ * 功能描述：JFrame窗口类文件
+ */
+public class MyJFrame extends JFrame {
+    private JLabel resultLabel;//用于显示执行结果的文本标签
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
+    private JButton button4;
+    private JButton button5;
 
-public class ButtonActionListener implements ActionListener {
-
-    //在这个方法中要操作某个窗体中的组件，我们不能为actionPerformed方法传参来操作它
-    //我们可以类定义一个窗体的引用，然后通过构造方法传入到监听器当中
-    private MyJFrame frame;
-    private String button_Name;
-    private int count;
-
-
-    public ButtonActionListener(MyJFrame frame, String button_Name) {
-        super();
-        this.frame = frame;
-        this.button_Name = button_Name;
+    public MyJFrame() throws HeadlessException {
+        init();
     }
 
+    private void init() {
+        setSize(450,300);
+        setLocationRelativeTo(null);
+        setTitle("Java测试窗口");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        count++;
-        //我们没有办法直接访问MyJFrame中的私有属性，只能通过MyJFrame提供get方法或提升button的访问权限来访问它
-        frame.button2.setText(button_Name + "被点击了" + count + "次");
+        resultLabel = new JLabel("提示信息：");
+        button1 = new JButton("按钮1");
+        button2 = new JButton("按钮2");
+
+        Container container = this.getContentPane();
+        container.setLayout(null); //absolute layout:绝对布局管理器
+
+        resultLabel.setBounds(50,20,200,35);
+        button1.setBounds(20,100,100,35);
+        button2.setBounds(200,100,100,35);
+
+        container.add(resultLabel);
+        container.add(button1);
+        container.add(button2);
+
+        button1.addActionListener(new MyActionListener(this,resultLabel));
+        button2.addActionListener(new MyActionListener(this,resultLabel));
     }
 }
