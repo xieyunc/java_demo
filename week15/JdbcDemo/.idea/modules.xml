@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GenericMethodDemo.iml" filepath="$PROJECT_DIR$/GenericMethodDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JdbcDemo.iml" filepath="$PROJECT_DIR$/JdbcDemo.iml" />
     </modules>
   </component>
 </project>
