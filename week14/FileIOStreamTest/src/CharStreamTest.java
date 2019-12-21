@@ -9,6 +9,7 @@ public class CharStreamTest {
         FileReader in = null;
         try {
             in = new FileReader("test.txt");
+            System.out.println("当前文件的字符编码为："+in.getEncoding());
             int b = 0;
             while (true) {
                 b = in.read(); //一次读取一个字符
@@ -28,9 +29,9 @@ public class CharStreamTest {
         FileWriter out = null;
         try {
             out = new FileWriter("test.txt");
-            String str = "Java数据写入";
+            System.out.println("当前文件的字符编码为："+out.getEncoding());
+            String str = "Java数据写入！\r\n";
             out.write(str);
-            out.write("\r\n");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
