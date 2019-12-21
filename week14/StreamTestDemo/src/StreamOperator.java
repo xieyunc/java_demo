@@ -1,28 +1,27 @@
 import java.io.*;
-
 /**
- * æ–‡ä»¶åï¼šStreamOperator.java
- * åŠŸèƒ½æè¿°ï¼šæµæ“ä½œç±»æ–‡ä»¶
+ * ÎÄ¼şÃû£ºStreamOperator.java
+ * ¹¦ÄÜÃèÊö£ºÁ÷²Ù×÷ÀàÎÄ¼ş
  */
 public class StreamOperator {
-    private final int BUF_SIZE = 10; //ä¸ºæ¼”ç¤ºæ•ˆæœï¼Œæ•…æ„æŠŠç¼“å­˜è®¾ç½®å¾—å¾ˆå°ï¼Œæ­£å¸¸ä¸€èˆ¬ä¸º1024çš„å€æ•°
+    private final int BUF_SIZE = 10; //ÎªÑİÊ¾Ğ§¹û£¬¹ÊÒâ°Ñ»º´æÉèÖÃµÃºÜĞ¡£¬Õı³£Ò»°ãÎª1024µÄ±¶Êı
 
-    //-----------------å­—èŠ‚æµæ–‡ä»¶å¤åˆ¶æ–¹æ³•---------------//
+    //-----------------×Ö½ÚÁ÷ÎÄ¼ş¸´ÖÆ·½·¨---------------//
     void CopyFileByByteStream(String sFileName,String dFileName) throws IOException {
         FileInputStream fis = null;
         FileOutputStream fos = null;
 
-        long byteStart = System.currentTimeMillis();//è·å–ç³»ç»Ÿå½“å‰æ—¶é—´æˆ³
+        long byteStart = System.currentTimeMillis();//»ñÈ¡ÏµÍ³µ±Ç°Ê±¼ä´Á
         try {
             fis = new FileInputStream(sFileName);
             fos = new FileOutputStream(dFileName);
 
-            int hasRead = 0;
+            int len = 0;
 
             byte[] byteArray = new byte[BUF_SIZE];
 
-            while ((hasRead = fis.read(byteArray))>0) {
-                fos.write(byteArray,0,hasRead);
+            while ((len = fis.read(byteArray))>0) {
+                fos.write(byteArray,0,len);
             }
             fos.flush();
         } catch (IOException e) {
@@ -32,32 +31,27 @@ public class StreamOperator {
                 fis.close();
             if (fos != null)
                 fos.close();
+
             long byteEnd = System.currentTimeMillis();
-            System.out.println("å­—èŠ‚æµå¤åˆ¶æ–‡ä»¶å®Œæ¯•ï¼å…±èŠ±è´¹"+(byteEnd-byteStart)+"æ¯«ç§’ã€‚");
+            System.out.println("×Ö½ÚÁ÷¸´ÖÆÎÄ¼şÍê±Ï£¡¹²»¨·Ñ"+(byteEnd-byteStart)+"ºÁÃë¡£");
         }
 
     }
 
-    //-----------------å­—èŠ‚æµ+ç¼“å­˜æµæ–‡ä»¶å¤åˆ¶æ–¹æ³•---------------//
+    //-----------------×Ö½ÚÁ÷+»º´æÁ÷ÎÄ¼ş¸´ÖÆ·½·¨---------------//
     void CopyFileByByteBufferedStream(String sFileName,String dFileName) throws IOException {
-        FileInputStream fis = null;
-        FileOutputStream fos = null;
-
         BufferedInputStream bis = null;
         BufferedOutputStream bos = null;
 
-        long byteStrat = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
         try {
-            fis = new FileInputStream(sFileName);
-            fos = new FileOutputStream(dFileName);
+            bis = new BufferedInputStream(new FileInputStream(sFileName));
+            bos = new BufferedOutputStream(new FileOutputStream(dFileName));
 
-            bis = new BufferedInputStream(fis);
-            bos = new BufferedOutputStream(fos);
-
-            int hasRead = 0;
+            int len = 0;
             byte[] bufArray = new byte[BUF_SIZE];
-            while ((hasRead = bis.read(bufArray))>0) {
-                bos.write(bufArray,0,hasRead);
+            while ((len = bis.read(bufArray))>0) {
+                bos.write(bufArray,0,len);
             }
             bos.flush();
         } catch (IOException e) {
@@ -67,37 +61,33 @@ public class StreamOperator {
                 bis.close();
             if (bos != null)
                 bos.close();
-            if (fis != null)
-                fis.close();
-            if (fos != null)
-                fis.close();
 
-            long byteEnd = System.currentTimeMillis();
-            System.out.println("å­—èŠ‚æµ+ç¼“å­˜æµå¤åˆ¶æ–‡ä»¶å®Œæ¯•ï¼å…±èŠ±è´¹"+(byteEnd-byteStrat)+"æ¯«ç§’ã€‚");
+            long endTime = System.currentTimeMillis();
+            System.out.println("×Ö½ÚÁ÷+»º´æÁ÷¸´ÖÆÎÄ¼şÍê±Ï£¡¹²»¨·Ñ"+(endTime-startTime)+"ºÁÃë¡£");
         }
     }
 
-    //-----------------å­—ç¬¦æµæ–‡ä»¶å¤åˆ¶æ–¹æ³•---------------//
+    //-----------------×Ö·ûÁ÷ÎÄ¼ş¸´ÖÆ·½·¨---------------//
     void CopyFileByCharStream(String sFileName,String dFileName) throws IOException {
         InputStreamReader reader = null;
         OutputStreamWriter writer = null;
 
-        FileReader fileReader = null;
-        FileWriter fileWriter = null;
+        //FileReader fileReader = null;
+        //FileWriter fileWriter = null;
 
-        long charStart = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
         try {
             String charsetName = getFileCharsetName(sFileName);
             reader = new InputStreamReader(new FileInputStream(sFileName),charsetName);
             writer = new OutputStreamWriter(new FileOutputStream(dFileName),charsetName);
 
-            //fileReader = new FileReader(isr);
+            //fileReader = new FileReader(sFileName);
             //fileWriter = new FileWriter(dFileName);
 
-            int hasRead = 0;
+            int len = 0;
             char[] charArray = new char[BUF_SIZE];
-            while ((hasRead = reader.read(charArray))>0) {
-                writer.write(charArray,0,hasRead);
+            while ((len = reader.read(charArray))>0) {
+                writer.write(charArray,0,len);
             }
             writer.flush();
         } catch (IOException e) {
@@ -107,12 +97,12 @@ public class StreamOperator {
                 reader.close();
             if (writer != null)
                 writer.close();
-            long charEnd = System.currentTimeMillis();
-            System.out.println("å­—ç¬¦æµå¤åˆ¶æ–‡ä»¶å®Œæ¯•ï¼å…±èŠ±è´¹"+(charEnd-charStart)+"æ¯«ç§’ã€‚");
+            long endTime = System.currentTimeMillis();
+            System.out.println("×Ö·ûÁ÷¸´ÖÆÎÄ¼şÍê±Ï£¡¹²»¨·Ñ"+(endTime-startTime)+"ºÁÃë¡£");
         }
     }
 
-    //-----------------å­—ç¬¦æµ+ç¼“å­˜æµæ–‡ä»¶å¤åˆ¶æ–¹æ³•---------------//
+    //-----------------×Ö·ûÁ÷+»º´æÁ÷ÎÄ¼ş¸´ÖÆ·½·¨---------------//
     void CopyFileByCharBufferedStream(String sFileName,String dFileName) throws IOException {
         InputStreamReader reader = null;
         OutputStreamWriter writer = null;
@@ -120,7 +110,7 @@ public class StreamOperator {
         BufferedReader bufferedReader = null;
         BufferedWriter bufferedWriter = null;
 
-        long charStart = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
         try {
             String charsetName = getFileCharsetName(sFileName);
             reader = new InputStreamReader(new FileInputStream(sFileName),charsetName);
@@ -129,37 +119,36 @@ public class StreamOperator {
             bufferedReader = new BufferedReader(reader);
             bufferedWriter = new BufferedWriter(writer);
 
-            int hasRead = 0;
+            int len = 0;
             char[] charArray = new char[BUF_SIZE];
-            while ((hasRead = bufferedReader.read(charArray))>0) {
-                bufferedWriter.write(charArray,0,hasRead);
+            while ((len = bufferedReader.read(charArray))>0) {
+                bufferedWriter.write(charArray,0,len);
             }
             bufferedWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (reader != null)
-                reader.close();
-            if (writer != null)
-                writer.close();
             if (bufferedReader != null)
                 bufferedReader.close();
             if (bufferedWriter != null)
                 bufferedWriter.close();
-            long charEnd = System.currentTimeMillis();
-            System.out.println("å­—ç¬¦æµ+ç¼“å­˜æµå¤åˆ¶æ–‡ä»¶å®Œæ¯•ï¼å…±èŠ±è´¹"+(charEnd-charStart)+"æ¯«ç§’ã€‚");
+            if (reader != null)
+                reader.close();
+            if (writer != null)
+                writer.close();
+            long endTime = System.currentTimeMillis();
+            System.out.println("×Ö·ûÁ÷+»º´æÁ÷¸´ÖÆÎÄ¼şÍê±Ï£¡¹²»¨·Ñ"+(endTime-startTime)+"ºÁÃë¡£");
         }
     }
 
     /**
-     * è·å–æ–‡æœ¬æ–‡ä»¶çš„ç¼–ç æ ¼å¼
+     * »ñÈ¡ÎÄ±¾ÎÄ¼şµÄ±àÂë¸ñÊ½
      * @param fileName :file
-     * @return æ–‡ä»¶ç¼–ç æ ¼å¼
+     * @return ÎÄ¼ş±àÂë¸ñÊ½
      * @throws IOException
      */
     public static String getFileCharsetName(String fileName) throws IOException {
-        BufferedInputStream bin = new BufferedInputStream(
-                new FileInputStream(fileName));
+        BufferedInputStream bin = new BufferedInputStream(new FileInputStream(fileName));
         int p = (bin.read() << 8) + bin.read();
         String code = null;
 
