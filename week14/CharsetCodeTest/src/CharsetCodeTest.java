@@ -17,14 +17,11 @@ public class CharsetCodeTest {
         try {
             String fileCharsetName = getFileCharsetName(path);
             System.out.println("文件的编码格式为："+fileCharsetName);
-<<<<<<< HEAD
 
             InputStream is = new FileInputStream(path);
-=======
-            File file = new File(path);
 
-            InputStream is = new FileInputStream(file);
->>>>>>> 5f0b4a22be915c0dfd4c1a30e8c537e521f64c42
+            InputStream is = new FileInputStream(path);
+
             InputStreamReader isr = new InputStreamReader(is, fileCharsetName);
             BufferedReader br = new BufferedReader(isr);
 
