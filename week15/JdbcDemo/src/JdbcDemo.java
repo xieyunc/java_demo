@@ -12,7 +12,7 @@ public class JdbcDemo {
     public static void main(String[] args) {
         String driveName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
-        String dbURL = "jdbc:sqlserver://172.18.4.13:1433;DatabaseName=jfgl_new";
+        String url = "jdbc:sqlserver://172.18.4.13:1433;DatabaseName=jfgl_new";
         String userName = "jfgl_sa";
         String userPassword = "q1w2E#R$";
 
@@ -23,8 +23,9 @@ public class JdbcDemo {
             e.printStackTrace();
             System.out.println("驱动程序加载失败！");
         }
+
         try {
-            Connection dbConn = DriverManager.getConnection(dbURL,userName,userPassword);
+            Connection dbConn = DriverManager.getConnection(url,userName,userPassword);
             System.out.println("数据库连接成功！");
 
             final String sql = "select * from 操作员表";
