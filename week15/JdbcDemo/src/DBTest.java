@@ -7,7 +7,7 @@ import java.text.ParseException;
  */
 public class DBTest {
     //插入数据
-    public static void saveInfo(Object[] data) throws ParseException {
+    public static void insertCzy(Object[] data) throws ParseException {
         Connection conn = null;
         PreparedStatement pstmt = null;
         try {
@@ -20,6 +20,54 @@ public class DBTest {
             pstmt.setString(4,(String) data[3]);
             pstmt.setInt(5,(Integer) data[4]);
             pstmt.setDate(6,(new java.sql.Date((Long)data[5])));
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+            DB.closeStmt(pstmt);
+            DB.closeConn(conn);
+        }
+    }
+
+    //修改数据
+    public static void updateCzy(String czyId, Object[] data) throws ParseException {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            conn= DB.getConn();
+            String sql = "update 操作员表 set 操作员姓名=?,等级=?,密码=?,管理校区=?,注册日期=? where 操作员编号=? ";
+            pstmt = DB.getPStmt(conn, sql);
+
+            //pstmt.setString(1,(String) data[1]);
+            pstmt.setString(1,(String) data[1]);
+            pstmt.setInt(2,(Integer) data[2]);
+            pstmt.setString(3,(String) data[3]);
+            pstmt.setInt(4,(Integer) data[4]);
+            pstmt.setDate(5,(new java.sql.Date((Long)data[5])));
+
+            pstmt.setString(6, czyId);
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally{
+            DB.closeStmt(pstmt);
+            DB.closeConn(conn);
+        }
+    }
+
+    //删除数据
+    public static void deleteCzy(String czyId) throws ParseException {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            conn= DB.getConn();
+            String sql = "delete from 操作员表 where 操作员编号=? ";
+            pstmt = DB.getPStmt(conn, sql);
+            pstmt.setString(1, czyId);
             pstmt.executeUpdate();
         }
         catch (SQLException e) {
@@ -71,6 +119,16 @@ public class DBTest {
         }
     }
 
+    public static boolean czyExists(String czyId) throws ParseException {
+        String sql = "select count(*) from 操作员表 where 操作员编号='"+czyId+"'";
+        Connection conn = null;
+        boolean bl = false;
+        conn= DB.getConn();
+        bl = DB.recordExists(conn,sql);
+        DB.closeConn(conn);
+        return bl;
+    }
+
     public static void main(String[] args) {
 
         Object[] objects = new Object[6];
@@ -83,8 +141,22 @@ public class DBTest {
         objects[5] = new java.util.Date().getTime(); //时间戳 long类型
 
         try {
-            saveInfo(objects);
             queryInfo("select * from 操作员表");
+            System.out.println("---------------------------------------------------");
+
+            if(!czyExists("xyfd"))
+                insertCzy(objects);
+            queryInfo("select * from 操作员表");
+            System.out.println("---------------------------------------------------");
+
+            objects[3] = "778899";
+            updateCzy("xyfd",objects);
+            queryInfo("select * from 操作员表");
+            System.out.println("---------------------------------------------------");
+
+            deleteCzy("xyfd");
+            queryInfo("select * from 操作员表");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
