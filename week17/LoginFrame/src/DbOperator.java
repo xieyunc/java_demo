@@ -7,7 +7,7 @@ public class DbOperator {
     private static String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private static String url = "jdbc:sqlserver://172.18.4.13:1433;DatabaseName=xyfd_db";
     private static String dbUser = "xyfd";
-    private static String dbPwd = "a1b2C#D$";
+    private static String dbPwd = "a1b2C!D@";
 
     private static Connection conn = null;
 
@@ -16,7 +16,8 @@ public class DbOperator {
             Class.forName(driverName);
             //System.out.println("数据库驱动加载OK!");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("数据库驱动加载失败!");
+            //e.printStackTrace();
         }
     }
 
@@ -26,7 +27,8 @@ public class DbOperator {
             //System.out.println("数据库连接OK!");
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("数据库连接失败!");
+            //e.printStackTrace();
             return false;
         }
     }

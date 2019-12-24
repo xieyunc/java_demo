@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class JdbcTest {
+public class DbOperatorTest {
     public static void main(String[] args) {
 
         if (!DbOperator.connDB() ) {

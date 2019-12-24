@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginFrame extends JFrame {
+    private JTextField textUser;
+    private JPasswordField textPwd;
+
     private void init() { //初始化窗口和控件
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -29,10 +32,10 @@ public class LoginFrame extends JFrame {
         JLabel labelPwd = new JLabel("用户密码：");
         labelPwd.setBounds(50,90,100,25);
 
-        JTextField textUser = new JTextField("",20);
+        textUser = new JTextField("",20);
         textUser.setBounds(160,50,180,25);
 
-        JPasswordField textPwd = new JPasswordField("",20);
+        textPwd = new JPasswordField("",20);
         textPwd.setBounds(160,90,180,25);
 
         JButton buttonCancel = new JButton("退出");
@@ -45,8 +48,8 @@ public class LoginFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String userId = textUser.getText();
-                String userPwd = textPwd.getText();
+                final String userId = textUser.getText();
+                final String userPwd = textPwd.getText();
 
                 if (userId.equals("") || userPwd.equals("")) {
                     JOptionPane.showMessageDialog(null, "信息输入不全！用户名和密码不能为空！\r\n请检查后重新登录！\r\n", "系统提示",JOptionPane.WARNING_MESSAGE);
