@@ -1,7 +1,7 @@
 /*
 某公司雇员示例：
 需求：
-        程序员　：姓名，工号，薪水，工作内容
+        程序员　：姓名，工号，薪水，工作内容，开发语言
         项目经理：姓名，工号，薪水，工作内容，还有奖金
         对给出需求进行数据建模
 分析：
@@ -27,7 +27,7 @@
 public class AbstractTest {
     public static void main(String[] args) {
         Manager m = new Manager("张三丰子", "1001", 12000.00, 6000.00);
-        m.work();
+        m.work(); 
 
         Employee em = m;//声明了一个Employee的变量并赋值，它是Manager和Programmer的父类
         //因为Employee中并无bonus成员，故必须对em进行类型判断，只有类型转换后才能访问bonus成员
