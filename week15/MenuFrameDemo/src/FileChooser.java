@@ -1,7 +1,7 @@
 //AWT: FileDialog类 + FilenameFilter类 可以实现本功能
 //Swing: JFileChooser类 + FileFilter类     可以实现本功能
 //
-//该类用来测试打开文件和保存文件的对话框   
+//该类用来测试打开文件和保存文件的对话框 
 
 import java.awt.*;      //为了使用布局管理器   
 import java.awt.event.*;//用来处理事件   

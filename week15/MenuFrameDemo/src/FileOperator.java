@@ -8,6 +8,7 @@ public class FileOperator {
         System.out.println(selectFile("",JFileChooser.SAVE_DIALOG));
     }
 
+	//打开文件对话框，返回已选择的文件名
     public static String selectFile(String pathFileName,int dialogType) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
