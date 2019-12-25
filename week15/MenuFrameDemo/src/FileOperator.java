@@ -76,12 +76,21 @@ public class FileOperator {
             //必须保证此处文件编码判断无误
             InputStreamReader isr = new InputStreamReader(is, fileCharsetName);
             BufferedReader br = new BufferedReader(isr);
-
-            //byte[] byteArray = new byte[8192];
-            //int len = 0;
-
+            BufferedReader br2 = new BufferedReader(isr);
+/*
+            char[] charArray = new char[8192];
+            int len = 0;
+            long start1 = System.currentTimeMillis();
+            while((len = br2.read(charArray))>0) {
+                content.append(new String(charArray,0,len));
+            }
+            br2.close();
+            long end1 = System.currentTimeMillis();
+            System.out.println("charArray:"+(end1-start1));
+*/
             String str = "";
             boolean isFirst = true;
+            long start2 = System.currentTimeMillis();
             while (null != (str = br.readLine())) {
                 if (!isFirst)
                     content.append(System.lineSeparator());
@@ -90,6 +99,9 @@ public class FileOperator {
                     isFirst = false;
                 content.append(str);
             }
+            long end2 = System.currentTimeMillis();
+            System.out.println("charArray:"+(end2-start2));
+
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
