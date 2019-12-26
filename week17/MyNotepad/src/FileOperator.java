@@ -1,4 +1,8 @@
-import java.awt.*;
+/**
+ * 文件名：FileOperator.java
+ * 功能描述：文件读写类
+ */
+
 import java.io.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -134,8 +138,21 @@ public class FileOperator {
     }
 
     public static String getFileCharsetName(String fileName) throws IOException {
+        String code = "UTF-8";
+        try {
+            code = EncodeUtils.getEncode(fileName, true);
+            System.out.println(code);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return code;
+    }
+
+    /*
+    public static String getFileCharsetName(String fileName) throws IOException {
         InputStream inputStream = new FileInputStream(fileName);
-        byte[] head = new byte[3];
+        final int headSize = 3;
+        byte[] head = new byte[headSize];
         inputStream.read(head);
 
         String charsetName = "GBK";//或GB2312，即ANSI
@@ -147,11 +164,45 @@ public class FileOperator {
             charsetName = "UTF-8"; //UTF-8(不含BOM)
         else if(head[0]==-17 && head[1]==-69 && head[2] ==-65)
             charsetName = "UTF-8"; //UTF-8-BOM
+        else
+        {
+            int i = 0;
+            charsetName = "UTF-8 NoBom";
+            while (i < headSize - 2) {
+                if ((head[i] & 0x00FF) < 0x80) {// (10000000)值小于0x80的为ASCII字符
+                    i++;
+                    continue;
+                } else if ((head[i] & 0x00FF) < 0xC0) {// (11000000)值在0x80和0xC0之间的,不是开头第一个
+                    charsetName = "Not UTF-8";
+                    System.err.println("文件编码错误: " + fileName + " : " + charsetName + "1000");
+                    break;
+                } else if ((head[i] & 0x00FF) < 0xE0) {// (11100000)此范围内为2字节UTF-8字符
+                    if ((head[i + 1] & (0xC0)) != 0x8) {
+                        charsetName = "Not UTF-8";
+                        System.err.println("文件编码错误: " + fileName + " : " + charsetName + "1100");
+                        break;
+                    } else
+                        i += 2;
+                } else if ((head[i] & 0x00FF) < 0xF0) {// (11110000)此范围内为3字节UTF-8字符
+                    if ((head[i + 1] & (0xC0)) != 0x80 || (head[i + 2] & (0xC0)) != 0x80) {
+                        charsetName = "Not UTF-8";
+                        System.err.println("文件编码错误: " + fileName + " : " + charsetName + "11100000" + (head[i + 1] & (0xC0)));
+                        break;
+                    } else
+                        i += 3;
+                } else {
+                    charsetName = "Not UTF-8";
+                    System.err.println("文件编码错误: " + fileName + " : " + charsetName + "1111");
+                    break;
+                }
+            }
+        }
 
         inputStream.close();
 
         //System.out.println(code);
         return charsetName;
     }
+     */
 
 }

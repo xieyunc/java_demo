@@ -1,6 +1,6 @@
 /**
- * 文件名：MenuFrame.java
- * 功能描述：菜单窗口类
+ * 文件名：MainFrame.java
+ * 功能描述：程序主窗口类
  */
 import java.awt.*;
 import java.awt.event.*;
@@ -12,10 +12,10 @@ import javax.swing.event.DocumentListener;
 
 public class MainFrame extends JFrame {
     private JTextArea textArea = new JTextArea();
+    private JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                                                        JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
     private MainMenu mainMenu;
-    //private String currentFileName = ""; //当前文件名
-    //private String currentFileCharset = "UTF-8";//当前文件字符编码
-    //private boolean isModified = false;//文件是否已修改
 
     public MainFrame() {
         initFrame();
@@ -26,7 +26,7 @@ public class MainFrame extends JFrame {
     private void initFrame() {
         setTitle("记事本");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //设置窗口关闭方式
-        setSize(700,450);
+        setSize(800,535);
         setLocationRelativeTo(null); //居中显示
     }
 
@@ -57,7 +57,12 @@ public class MainFrame extends JFrame {
             }
         });
 
-        container.add(textArea);
+        //container.add(textArea);
+
+        //VERTICAL垂直    HORIZONTAL水平
+        //JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        container.add(scrollPane,BorderLayout.CENTER);
+
         validate();
     }
 
