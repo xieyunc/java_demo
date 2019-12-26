@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="AbstractDemo/src"/>
+	<classpathentry kind="src" path="EnumDemo/src"/>
+	<classpathentry kind="src" path="InterfaceDemo/src"/>
+	<classpathentry kind="src" path="InterfaceTest/src"/>
+	<classpathentry kind="src" path="PackageDemo/src"/>
+	<classpathentry kind="output" path="InterfaceDemo/out/production/InterfaceDemo"/>
+</classpath>
