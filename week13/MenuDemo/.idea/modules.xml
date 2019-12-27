@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MenuFrame" filepath="$PROJECT_DIR$/MenuFrame" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MenuFrameDemo.iml" filepath="$PROJECT_DIR$/.idea/MenuFrameDemo.iml" />
     </modules>
   </component>
 </project>

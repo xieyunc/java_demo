@@ -1,9 +1,9 @@
 import javax.swing.*;
 /**
- * 文件名：MenuFrameTest.java
+ * 文件名：MainMenuTest.java
  * 功能描述：测试类文件
  */
-class MenuFrameTest {
+class MainMenuTest {
 
     public static void main(String[] args) {
         try {
@@ -13,7 +13,7 @@ class MenuFrameTest {
 
         }catch (Exception e) {}
 
-        MenuFrame myFrame = new MenuFrame();
+        MainMenu myFrame = new MainMenu();
         myFrame.setVisible(true);
     }
 }

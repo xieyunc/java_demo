@@ -1,22 +1,21 @@
 /**
- * 文件名：MenuFrame.java
+ * 文件名：MainMenu.java
  * 功能描述：菜单窗口类
  */
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import java.lang.reflect.Modifier;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public class MenuFrame extends JFrame {
+public class MainMenu extends JFrame {
     private JTextArea textArea;
     private String currentFileName = ""; //当前文件名
     private String currentFileCharset = "UTF-8";//当前文件字符编码
     private boolean isModified = false;//文件是否已修改
 
-    public MenuFrame() {
+    public MainMenu() {
         initFrame();
         initMenu();
         initTextArea();
@@ -60,7 +59,7 @@ public class MenuFrame extends JFrame {
                     isModified = false;
                     currentFileCharset = "UTF-8";
                     currentFileName = "";
-                    MenuFrame.this.setTitle("记事本程序 Step by Step ……");//请注意内部匿名类对外部对象变量的访问方法
+                    MainMenu.this.setTitle("记事本程序 Step by Step ……");//请注意内部匿名类对外部对象变量的访问方法
                 }
 
                 //newFile();
