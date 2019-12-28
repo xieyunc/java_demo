@@ -39,7 +39,7 @@ public class MainFrame extends JFrame {
         container.setLayout(new BorderLayout());
 
         //textArea = new TextArea();
-        textArea.setFont(new Font(Font.MONOSPACED,Font.ROMAN_BASELINE,14));
+        textArea.setFont(new Font("新宋体",Font.ROMAN_BASELINE,14));
         textArea.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent documentEvent) {

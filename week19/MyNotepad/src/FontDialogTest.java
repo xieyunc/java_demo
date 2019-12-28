@@ -41,7 +41,7 @@ public class FontDialogTest extends JFrame {
         fontButton = new JButton("字体设置");
         fontButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Font myFont = FontDialog.showDialog(FontDialogTest.this);
+                Font myFont = FontDialog.showDialog(FontDialogTest.this,FontDialogTest.this.getContentPane().getFont());
                 if (myFont != null)
                     testLabel.setFont(myFont);
             }

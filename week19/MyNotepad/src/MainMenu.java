@@ -208,7 +208,7 @@ public class MainMenu {
             textArea.setWrapStyleWord(bl);   //激活断行不断字功能
         }
         else if (((JMenuItem)e.getSource()).getText().equals("字体(F)")) {
-            Font myFont = FontDialog.showDialog(mainFrame);
+            Font myFont = FontDialog.showDialog(mainFrame,textArea.getFont());
             if (myFont != null) {
                 textArea.setFont(myFont);
             }
