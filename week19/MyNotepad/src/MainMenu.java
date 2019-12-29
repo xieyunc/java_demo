@@ -17,9 +17,9 @@ import java.lang.reflect.Modifier;
 public class MainMenu {
     private JFrame mainFrame = null;
     private JTextArea textArea = null;
+    private String currentFileCharset = "UTF-8";//当前文件字符编码
 
     private String currentFileName = ""; //当前文件名
-    private String currentFileCharset = "UTF-8";//当前文件字符编码
     private boolean isModified = false;//文件是否已修改
 
     public Clipboard clipboard = new Clipboard("系统剪切板");//剪贴板
@@ -32,10 +32,15 @@ public class MainMenu {
         isModified = modified;
     }
 
+    public void setCurrentFileCharset(String currentFileCharset) {
+        this.currentFileCharset = currentFileCharset;
+    }
 
+    public String getCurrentFileCharset() {
+        return currentFileCharset;
+    }
 
-
-    public MainMenu(JFrame owner,JTextArea textArea) {
+    public MainMenu(JFrame owner, JTextArea textArea) {
         this.mainFrame = owner;
         this.textArea = textArea;
         initMenu();
@@ -132,11 +137,13 @@ public class MainMenu {
         //---------------------------END 【格式】菜单-----------------------//
 
         //---------------------------BEGIN 【查看】菜单-----------------------//
-        JCheckBoxMenuItem miStatusBar=new JCheckBoxMenuItem("状态栏(T)");
-        miFontSet.setMnemonic('F');
+        JCheckBoxMenuItem miStatusBar=new JCheckBoxMenuItem("状态栏(S)");
+        miStatusBar.setMnemonic('S');
+        miStatusBar.setState(true);
         miStatusBar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                ((MainFrame)mainFrame).setPanelStatusBarVisible(miStatusBar.getState());
                 //自已加状态栏自已写
             }
         });
@@ -174,6 +181,7 @@ public class MainMenu {
             }
         }
         else if (((JMenuItem)e.getSource()).getText().equals("保存(S)")) {
+            //System.out.println(currentFileCharset);
             saveFile(currentFileName);
         }
         else if (((JMenuItem)e.getSource()).getText().equals("另存为(A)")) {
@@ -304,6 +312,7 @@ public class MainMenu {
             textArea.setText(content);
             currentFileName = fn;
             currentFileCharset = FileOperator.getFileCharsetName(fn);
+            ((MainFrame)mainFrame).setCurrentFileCharset(currentFileCharset);
             isModified = false;
             mainFrame.setTitle(new File(currentFileName).getName());
 
@@ -343,7 +352,7 @@ public class MainMenu {
         boolean saveOK = false;
         try {
             String content = textArea.getText();
-            saveOK = FileOperator.writeTxt(fileName, content, currentFileName);
+            saveOK = FileOperator.writeTxt(fileName, content, currentFileCharset);
             if (saveOK) { // && !currentFileName.equals(fileName)) {
                 currentFileName = fileName;
                 isModified = false;

@@ -2,24 +2,52 @@
  * 文件名：MainFrame.java
  * 功能描述：程序主窗口类
  */
+import javafx.geometry.HorizontalDirection;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.lang.reflect.Modifier;
 import javax.swing.*;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 public class MainFrame extends JFrame {
+
+    private Container container = this.getContentPane();
     private JTextArea textArea = new JTextArea();
     private JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                                                         JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
+    private JPanel panelStatusBar = new JPanel(new BorderLayout(10,5));
+    private JLabel labelContent = new JLabel("1行,0列");
+    private JLabel labelEncoding = new JLabel("字符编码：UTF-8  ");
+
     private MainMenu mainMenu;
 
+    public void setCurrentFileCharset(String currentFileCharset) {
+        labelEncoding.setText("字符编码："+mainMenu.getCurrentFileCharset()+"  ");
+    }
+
+    private void updateStatusBar() {
+        try {
+            int caretPos = textArea.getCaretPosition();
+            int row = textArea.getLineOfOffset(caretPos) + 1;
+            int col = caretPos - textArea.getLineStartOffset(row);;
+            labelContent.setText(String.format("%d行, %d列", row, col));
+            //labelEncoding.setText("字符编码："+currentFileCharset+"  ");
+            //System.out.println(labelContent.getText());
+            labelContent.validate();
+        } catch (Exception e) {}
+    }
+
     public MainFrame() {
+        container.setLayout(new BorderLayout());
         initFrame();
         initTextArea();
+        initStatusBar();
         initMenu();
     }
 
@@ -35,10 +63,6 @@ public class MainFrame extends JFrame {
     }
 
     private void initTextArea() {
-        Container container = this.getContentPane();
-        container.setLayout(new BorderLayout());
-
-        //textArea = new TextArea();
         textArea.setFont(new Font("新宋体",Font.ROMAN_BASELINE,14));
         textArea.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -57,14 +81,42 @@ public class MainFrame extends JFrame {
             }
         });
 
-        //container.add(textArea);
+        textArea.addCaretListener(new CaretListener() {
+            @Override
+            public void caretUpdate(CaretEvent e) {
+                updateStatusBar();
+            }
+        });
 
-        //VERTICAL垂直    HORIZONTAL水平
-        //JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        /*
+        container.add(textArea);
+        VERTICAL垂直    HORIZONTAL水平
+        JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        */
+
         container.add(scrollPane,BorderLayout.CENTER);
 
         validate();
     }
 
+    private void initStatusBar() {
+        JLabel labelLeft = new JLabel("提示信息：");
+        labelLeft.setHorizontalAlignment(SwingConstants.LEFT);
 
+        labelContent.setHorizontalAlignment(SwingConstants.RIGHT);
+
+        labelContent.setHorizontalAlignment(SwingConstants.LEFT);
+
+        panelStatusBar.add(labelLeft,BorderLayout.WEST);
+        panelStatusBar.add(labelContent,BorderLayout.CENTER);
+        panelStatusBar.add(labelEncoding,BorderLayout.EAST);
+
+        container.add(panelStatusBar,BorderLayout.SOUTH);
+
+        validate();
+    }
+
+    public void setPanelStatusBarVisible(boolean visible) {
+        this.panelStatusBar.setVisible(visible);
+    }
 }
