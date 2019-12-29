@@ -104,7 +104,7 @@ public class FileOperator {
                 content.append(str);
             }
             long end2 = System.currentTimeMillis();
-            System.out.println("charArray:"+(end2-start2));
+            //System.out.println("charArray:"+(end2-start2));
 
             br.close();
         } catch (Exception e) {
@@ -141,7 +141,7 @@ public class FileOperator {
         String code = "UTF-8";
         try {
             code = EncodeUtils.getEncode(fileName, true);
-            System.out.println(code);
+            //System.out.println(code);
         }catch (Exception e) {
             e.printStackTrace();
         }

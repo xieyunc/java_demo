@@ -35,7 +35,7 @@ public class MainFrame extends JFrame {
         try {
             int caretPos = textArea.getCaretPosition();
             int row = textArea.getLineOfOffset(caretPos) + 1;
-            int col = caretPos - textArea.getLineStartOffset(row);;
+            int col = caretPos - textArea.getLineStartOffset(row) + 1;
             labelContent.setText(String.format("%d行, %d列", row, col));
             //labelEncoding.setText("字符编码："+currentFileCharset+"  ");
             //System.out.println(labelContent.getText());
