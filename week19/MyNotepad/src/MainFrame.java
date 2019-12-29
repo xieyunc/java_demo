@@ -22,7 +22,7 @@ public class MainFrame extends JFrame {
                                                         JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
     private JPanel panelStatusBar = new JPanel(new BorderLayout(10,5));
-    private JLabel labelContent = new JLabel("1行,0列");
+    private JLabel labelContent = new JLabel("1行, 1列");
     private JLabel labelEncoding = new JLabel("字符编码：UTF-8  ");
 
     private MainMenu mainMenu;
@@ -31,16 +31,19 @@ public class MainFrame extends JFrame {
         labelEncoding.setText("字符编码："+mainMenu.getCurrentFileCharset()+"  ");
     }
 
-    private void updateStatusBar() {
+    private void updateStatusBar(CaretEvent e) {
         try {
-            int caretPos = textArea.getCaretPosition();
-            int row = textArea.getLineOfOffset(caretPos) + 1;
-            int col = caretPos - textArea.getLineStartOffset(row) + 1;
-            labelContent.setText(String.format("%d行, %d列", row, col));
+            int caretPos = textArea.getCaretPosition(); //获取当前光标处出字符在textArea中的索引值
+            int row = textArea.getLineOfOffset(caretPos); //算出行号
+            int col = caretPos - textArea.getLineStartOffset(row); //算出列号
+
+            labelContent.setText(String.format("%d行, %d列", row + 1, col + 1));
             //labelEncoding.setText("字符编码："+currentFileCharset+"  ");
-            //System.out.println(labelContent.getText());
+            //System.out.println(labelContent.getText()+"|"+caretPos);
             labelContent.validate();
-        } catch (Exception e) {}
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public MainFrame() {
@@ -84,7 +87,7 @@ public class MainFrame extends JFrame {
         textArea.addCaretListener(new CaretListener() {
             @Override
             public void caretUpdate(CaretEvent e) {
-                updateStatusBar();
+                updateStatusBar(e);
             }
         });
 
